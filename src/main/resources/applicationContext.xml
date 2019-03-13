@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	">
+	
+	<bean id="h1" class="com.github.yash777.standalone.Hello_ScopeTest" scope="singleton" init-method="init" destroy-method="destroy">
+		<constructor-arg value="Yogesh"/>
+	</bean>
+
+	<bean id="h2" class="com.github.yash777.standalone.Hello_ScopeTest" scope="prototype" init-method="init" destroy-method="destroy">
+		<property name="name" value="NET"/>
+	</bean>
+	
+	<!-- cvc-complex-type.2.4.c: The matching wildcard is strict, but no declaration can be found for element 'context:annotation-config'. -->
+	<context:annotation-config/>
+	
+	<!-- <context:component-scan base-package="com.github.yash777.standalone"/> -->
+	<!-- Annotation injection is performed before XML injection,
+	thus the latter configuration will override the former for properties wired through both approaches. -->
+	<bean id="h3" class="com.github.yash777.standalone.Hello_ScopeTest" scope="prototype" init-method="init" destroy-method="destroy">
+		<!-- <constructor-arg value="YASH"/> -->
+		
+	</bean>
+</beans>
